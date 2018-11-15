@@ -1,43 +1,56 @@
 import MyMath
+import MyBase
 
-base = 4 #1e4
-sz = 75
+def getPublicKey (file) :
+	fi = open(file,"r")
+	n = int(fi.readline())
+	e = int(fi.readline())
+	fi.close()
+	return n, e
 
-# Get (n,e) : Public key
-fi = open("PublicKey.txt","r")
-n = int(fi.readline())
-e = int(fi.readline())
-fi.close()
-print(n,e)
+def getPlaintext (file):
+	fi = open(file,"r")
+	P = fi.read()
+	fi.close()
+	return P
 
-fi = open("Plaintext.txt","r")
-s = fi.read()
-fi.close()
+def convertStringToInt(P, base):
+	R = []
+	for i in P:
+		c = str(ord(i))
+		while len(c) != base:
+			c = '0' + c #0000
+		R.append(c)
+	return R
 
-r = []
-for i in s:
-	c = str(ord(i))
-	while len(c) != base:
-		c = '0' + c
-	r.append(c)
-
-d = 0
-A = []
-x = ""
-for i in r:
-	if d < sz:
+def createBigInt(R, size_n):
+	A = []
+	x = ""
+	for i in R:
+		if len(x) + len(i) > size_n: # Tối ưu mã hóa nhiều kí tự nhất có thể
+			A.append(int(x))
+			x = ""
 		x+= i
-		d+= 1
-	else:
-		d = 1
-		A.append(int(x))
-		x = i
-A.append(int(x))
-print(A)
+	A.append(int(x))
+	return A
 
-fo = open("Ciphertext.txt","w")
-for i in A:
-	m = i
-	M = MyMath.powMod(m,e,n)
-	fo.write(str(M)+'\n')
-fo.close()
+def encode(n, e, A, file):
+	fo = open(file,"w")
+	C = ""
+	for i in A:
+		M = MyMath.powMod(i,e,n)
+		M = MyBase.toBase(M,62)
+		C+= M + ' '
+		fo.write(M+' ')
+	fo.close()
+	return C
+
+def main():
+	n, e = getPublicKey("PublicKey.txt")
+	P = getPlaintext("Plaintext.txt")
+	R = convertStringToInt(P, 4)
+	A = createBigInt(R, len(str(n)))
+	C = encode(n, e, A, "Ciphertext.txt")
+	#print (C)
+
+main()

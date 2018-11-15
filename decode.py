@@ -1,32 +1,43 @@
 import MyMath
+import MyBase
 
-base = 4 #1e4
-#Get (n,d) : Private key
-fi = open("PrivateKey.txt","r")
-n = int(fi.readline())
-d = int(fi.readline())
-fi.close()
 
-# Get Ciphertext
-fi = open("Ciphertext.txt","r")
-C = []
-while True:
-	m = fi.readline()
-	if len(m) == 0:
-		break
-	C.append(int(m))
-fi.close()
-#print(C)
+def getPrivateKey (file) : # file Privatekey
+	fi = open(file,"r")
+	n = int(fi.readline())
+	d = int(fi.readline())
+	fi.close()
+	return n, d
 
-# Decode
-fo = open("PlaintextDecode.txt","w")
-for i in C:
-	m = MyMath.powMod(i,d,n)
-	c = str(m)
-	while len(c) % base != 0:
-		c = '0' + c
-	x = 0
-	while x != len(c):
-		a = c[x:x+base]
-		x+= base
-		fo.write(chr(int(a)))
+def getCiphertext(file): # file Ciphertext
+	fi = open(file,"r")
+	C = fi.readline()
+	C = C.split(" ")
+	C = C[:-1]
+	fi.close()
+	return C
+
+def decode(n, d, C, base, fileOut): # file PlanintextDecode
+	fo = open(fileOut,"w")
+	P = ""
+	for i in C:
+		m = MyMath.powMod(MyBase.toInt(i,62),d,n)
+		c = str(m)
+		while len(c) % base != 0:
+			c = '0' + c
+		x = 0
+		while x != len(c):
+			a = c[x:x+base]
+			x+= base
+			P+= chr(int(a))
+			fo.write(chr(int(a)))
+	fo.close()
+	return P
+
+def main():
+	n, d= getPrivateKey("PrivateKey.txt")
+	C= getCiphertext("Ciphertext.txt")
+	C= decode(n, d, C, 4, "PlaintextDecode.txt")
+	#print(C)
+
+main()

@@ -4,7 +4,6 @@ def powMod(a, b, m):
 	while b != 0:
 		x.append(b & 1)
 		b = b >> 1
-	#print(x)
 	sz = len(x)
 	po = [a%m]
 	for i in range(1,sz):
@@ -34,3 +33,10 @@ def GCD_extended(a, b):
 		u1, u2, u3 = v1, v2, v3
 		v1, v2, v3 = t1, t2, t3
 	return u1, u2, u3
+
+
+# a = pow(201,1024)
+# b = pow(301,1024)
+# m = pow(951,1024)
+# print(pow(a,b,m))
+# print(powMod(a,b,m))

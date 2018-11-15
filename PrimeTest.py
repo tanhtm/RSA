@@ -16,6 +16,8 @@ fi.close()
 
 def Preprocessor(a):
 	for i in sprime:
+		if a == i:
+			return True
 		if a % int(i) == 0:
 			return False
 	return True

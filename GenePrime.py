@@ -30,15 +30,14 @@ def getPrime(bit):
 	# print(d3)
 	return p
 
-# #main
-# # print(Miller_Rabin(7916,20))
-# # print(isPrime(7918))
-# p = geneBigPrime(1024)
-# q = geneBigPrime(1024)
-# fo = open("BigPrime.txt","w")
-# fo.write(str(p)+'\n')
-# fo.write(str(q))
-# print(p)
-# print(q)
+def main(bits):
+	p = getPrime(bits)
+	q = getPrime(bits)
+	fo = open("BigPrime.txt","w")
+	fo.write(str(p)+'\n')
+	fo.write(str(q))
+	fo.close()
+
+main(1024)
 
 
