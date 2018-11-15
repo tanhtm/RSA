@@ -1,5 +1,9 @@
-dig ="0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
+dig ="0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz-+"
 def getId(ch):
+	if ch == '-':
+		return 62
+	if ch == '+':
+		return 63
 	if ch <= '9':
 		return int(ch)
 	if ch <= 'Z':

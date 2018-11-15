@@ -21,7 +21,7 @@ def decode(n, d, C, base, fileOut): # file PlanintextDecode
 	fo = open(fileOut,"w")
 	P = ""
 	for i in C:
-		m = MyMath.powMod(MyBase.toInt(i,62),d,n)
+		m = MyMath.powMod(MyBase.toInt(i,64),d,n)
 		c = str(m)
 		while len(c) % base != 0:
 			c = '0' + c

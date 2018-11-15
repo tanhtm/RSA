@@ -39,7 +39,7 @@ def encode(n, e, A, file):
 	C = ""
 	for i in A:
 		M = MyMath.powMod(i,e,n)
-		M = MyBase.toBase(M,62)
+		M = MyBase.toBase(M,64)
 		C+= M + ' '
 		fo.write(M+' ')
 	fo.close()
