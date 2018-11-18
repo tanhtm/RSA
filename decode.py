@@ -35,9 +35,9 @@ def decode(n, d, C, base, fileOut): # file PlanintextDecode
 	return P
 
 def main():
-	n, d= getPrivateKey("PrivateKey.txt")
-	C= getCiphertext("Ciphertext.txt")
-	C= decode(n, d, C, 4, "PlaintextDecode.txt")
+	n, d= getPrivateKey("Data/PrivateKey.txt")
+	C= getCiphertext("Data/Ciphertext.txt")
+	C= decode(n, d, C, 4, "Data/PlaintextDecode.txt")
 	#print(C)
 
 main()

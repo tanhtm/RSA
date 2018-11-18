@@ -21,17 +21,16 @@ def getD(e, phi):
 	return d
 
 def main():
-	p, q = getPQ("BigPrime.txt")
+	p, q = getPQ("Data/BigPrime.txt")
 	n = p*q
 	phi = (p-1)*(q-1)
 	e = getE(phi)
 	d = getD(e, phi)
-	fo = open("PublicKey.txt","w")
+	fo = open("Data/PublicKey.txt","w")
 	fo.write(str(n)+'\n'+str(e))
 	fo.close()
-	fo = open("PrivateKey.txt","w")
+	fo = open("Data/PrivateKey.txt","w")
 	fo.write(str(n)+'\n'+str(d))
 	fo.close()
 
 main()
-	

@@ -1,15 +1,14 @@
-import random 
+import random
 import PrimeTest
 
-def Random (bit):
-	a = random.getrandbits(bit)
-	a = a | 1 << (bit-1)
-	a = a | 1 
-	#print(bin(a)) 
+def Random (b):
+	a = random.getrandbits(b)
+	a = a | 1 << (b-1)
+	a = a | 1
 	return a;
 
-def getPrime(bit):
-	p = Random(bit)
+def getPrime(b):
+	p = Random(b)
 	d1 = d2 = d3 = 0
 	while True:
 		d1+= 1
@@ -33,11 +32,9 @@ def getPrime(bit):
 def main(bits):
 	p = getPrime(bits)
 	q = getPrime(bits)
-	fo = open("BigPrime.txt","w")
+	fo = open("Data/BigPrime.txt","w")
 	fo.write(str(p)+'\n')
 	fo.write(str(q))
 	fo.close()
 
 main(1024)
-
-
