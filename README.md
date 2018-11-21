@@ -30,7 +30,7 @@ Bài tập lớn - Số học thuật toán
     - **Fermat(p,x)**: Kiểm tra số p sử dụng định lý Fermat nhỏ với x cơ sở
     - **Miller_Rabin(p, x)**: Kiểm tra Miller- Rabin với x cơ sở
 
-  - ***GeneFrime.py***: Chương trình sinh nguyên tố xác suất
+  - ***GenePrime.py***: Chương trình sinh nguyên tố xác suất
 
     - **Random (b)**: Hàm trả về số lẻ ngẫu nhiên b bits
     - **getPrime(b)**: Hàm trả về số nguyên tố xác suất b bits
@@ -162,7 +162,7 @@ Bài tập lớn - Số học thuật toán
     			return False
     	return True
     ```
-    
+
 ## 5. Mã hóa RSA
   - **Tạo khóa**
     - Lấy 2 số p,q
