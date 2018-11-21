@@ -161,23 +161,23 @@ Bài tập lớn - Số học thuật toán
     	return True
     ```
 ## 5. Mã hóa RSA
-  - Tạo khóa
+  - **Tạo khóa**
     - Lấy 2 số p,q
     - Gắn n = p*q, phi = (p-1)(q-1)
     - Lấy e sao cho (e, phi) = 1
     - Gắn d là nghịch đảo modulo phi của e
     - In kết quả ra file
-  - Mã hóa
+  - **Mã hóa**
     - Lấy khóa công khai (n, e)
     - Lấy bản rõ P
     - Chuyển các kí tự trong P về số theo bản mã UTF-8 tạo thành mảng các số R
     - Ghép các số trong R thành số lớn nhỏ hơn n rồi mã hóa in kết quả ra file dạng số cơ 64
-  - Giải mã
+  - **Giải mã**
     - Lấy khóa bảo mật (n, d)
     - Lấy bản mã C trong file chuyển về cơ 10 rồi giải mã
     - Lấy kết quả tách số rồi chuyển về dạng kí tự
     - In kết quả ra file
 
-  - Kiến thức:
+  - **Kiến thức**
     - Tính nghịch đảo modulo bằng giải thuật Euclid mở rộng
     - Định lý Euler: a^(phi(n)) ≡ 1 mod n với (a,n) = 1
