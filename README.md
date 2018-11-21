@@ -129,7 +129,7 @@ Bài tập lớn - Số học thuật toán
     ```
   - **Miller_Rabin(p, x)**:
     - Ý nghĩa: Kiểm tra Miller- Rabin với x cơ sở
-    - Kiến thức: n là số nguyên dương lẻ, n-1 =2^s*t, n trải qua Miller cơ sở b nếu $$b^t ≡ 1 mod n$$
+    - Kiến thức: n là số nguyên dương lẻ, n-1 =2^s*t, n trải qua Miller cơ sở b nếu ~b^t ≡ 1 mod n~
     - Code:
 
     ```python
