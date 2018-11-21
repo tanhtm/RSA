@@ -17,11 +17,9 @@ def powMod(a, b, m):
 	return r
 
 def GCD(a, b):
-	while b != 0:
-		t = b
-		b = a%b
-		a = t
-	return a
+	if b == 0:
+		return a
+	return GCD(b, a%b)
 
 # a*x + b*y = z
 def GCD_extended(a, b):

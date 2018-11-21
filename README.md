@@ -4,11 +4,11 @@ Bài tập lớn - Số học thuật toán
 
 ## 1. Giới thiệu chung
 
-  - Tác giả:
-    - Sinh viên: **Nguyễn Tú Anh**
+  - **Tác giả**:
+    - Sinh viên: *Nguyễn Tú Anh*
     - MSV: A29888
     - Trường: Đại học Thăng Long
-  - Bài tập lớn:
+  - **Môn học và đề tài**:
     - Môn học: Số học thuật toán
     - Giảng viên: GS. Hà Huy Khoái
     - Chủ đề: Mã hóa RSA
@@ -64,7 +64,7 @@ Bài tập lớn - Số học thuật toán
 
 ## 3. MyMath - Hàm toán học
   - **powMod(a, b, m)**
-    - Ý nghĩa:  Trả về kết quả phép tính a^b mod m
+    - Ý nghĩa:  Trả về kết quả phép tính `a^b mod m`
     - Kiến thức: **Bình phương liên tiếp**
     - Code:
 
@@ -87,19 +87,17 @@ Bài tập lớn - Số học thuật toán
       	return r
       ```
   - **GCD(a, b)**
-    - Ý nghĩa: Trả về UCLN(a, b)
+    - Ý nghĩa: Trả về `UCLN(a, b)`
     - Kiến thức: **UCLN(a, b)= UCLN(b, a% b)**, Giải thuật **Euclid**
     - Code:
     ```python
     def GCD(a, b):
-    	while b != 0:
-    		t = b
-    		b = a%b
-    		a = t
-    	return a
+    	if b == 0:
+    		return a
+    	return GCD(b, a%b)
     ```
   - **GCD_extended(a, b)**
-    - Ý nghĩa: Trả về 3 số x,y,z thỏa mãn x*a + y*b = z = UCLN(a, b)
+    - Ý nghĩa: Trả về 3 số x,y,z thỏa mãn `x*a + y*b = z = UCLN(a, b)`
     - Kiến thức: Giải thuật **Euclid mở rộng**
     - Code:
     ```python
@@ -118,8 +116,8 @@ Bài tập lớn - Số học thuật toán
   - **Fermat(p,x)**:
     - Ý nghĩa: Kiểm tra số p sử dụng định lý Fermat nhỏ với x cơ sở.
     - Kiến thức:
-      - Định lý Fermat nhỏ: a^(p-1) ≡ 1(mod p) (p: số nguyên tố và a không chia hết cho p)
-      - Số giả nguyên tố cơ sở b
+      - Định lý Fermat nhỏ: `a^(p-1) ≡ 1(mod p)` (p: số nguyên tố và a không chia hết cho p)
+      - Số giả nguyên tố cơ sở
     - Code:
     ```python
     def Fermat(p,x):
@@ -131,7 +129,7 @@ Bài tập lớn - Số học thuật toán
     ```
   - **Miller_Rabin(p, x)**:
     - Ý nghĩa: Kiểm tra Miller- Rabin với x cơ sở
-    - Kiến thức: n là số nguyên dương lẻ, n-1 =2^s*t, n trải qua Miller cơ sở b nếu b^t ≡ 1 mod n hoặc b^((2^j)t) ≡ -1 mod n với j nào đó 0 ≤ j ≤ s-1
+    - Kiến thức: n là số nguyên dương lẻ, `n-1 =2^s*m`, n trải qua Miller cơ sở b nếu `b^t ≡ 1 mod n` hoặc `b^((2^j)t) ≡ -1 mod n` với j nào đó 0 ≤ j ≤ s-1
     - Code:
 
     ```python
@@ -165,22 +163,31 @@ Bài tập lớn - Số học thuật toán
 
 ## 5. Mã hóa RSA
   - **Tạo khóa**
-    - Lấy 2 số p,q
-    - Gắn n = p*q, phi = (p-1)(q-1)
-    - Lấy e sao cho (e, phi) = 1
-    - Gắn d là nghịch đảo modulo phi của e
+    - Lấy 2 số `p,q`
+    - Gắn `n = p*q`, `φ(n) = (p-1)(q-1)`
+    - Lấy e sao cho `(e, φ(n)) = 1`
+    - Gắn d là nghịch đảo modulo phi của e, xử dụng **GCD_extended**
+    ```python
+    def getD(e, phi):
+    	d = MyMath.GCD_extended(e,phi)[0] #[x,y,z] #d = x
+    	if d < 0:
+    		d+= phi
+    	return d
+    ```
     - In kết quả ra file
   - **Mã hóa**
-    - Lấy khóa công khai (n, e)
-    - Lấy bản rõ P
-    - Chuyển các kí tự trong P về số theo bản mã UTF-8 tạo thành mảng các số R
-    - Ghép các số trong R thành số lớn nhỏ hơn n rồi mã hóa in kết quả ra file dạng số cơ 64
+    - Lấy khóa công khai `(n, e)`
+    - Lấy bản rõ `P`
+    - Chuyển các kí tự trong P về số theo bản mã `UTF-8` tạo thành mảng các số R
+    - Ghép các số trong R thành số lớn nhỏ hơn n thành số `Pi` rồi mã hóa nó thành `Ci` với công thức: `Ci ≡ Pi^e mod n`
+    - In mảng số mới ra file với `cơ số 64`
   - **Giải mã**
-    - Lấy khóa bảo mật (n, d)
-    - Lấy bản mã C trong file chuyển về cơ 10 rồi giải mã
+    - Lấy khóa bảo mật `(n, d)`
+    - Lấy bản mã C trong file chuyển về `cơ số 10`
+    - Lấy từ số trong C là `Ci` giải mã được `Pi` với công thức: `Pi ≡ Ci^d mod n`
     - Lấy kết quả tách số rồi chuyển về dạng kí tự
     - In kết quả ra file
 
   - **Kiến thức**
-    - Tính nghịch đảo modulo bằng giải thuật Euclid mở rộng
-    - Định lý Euler: a^(phi(n)) ≡ 1 mod n với (a,n) = 1
+    - Tính nghịch đảo modulo bằng giải thuật *Euclid mở rộng*
+    - Định lý Euler: `a^φ(n) ≡ 1 mod n` với (a,n) = 1
