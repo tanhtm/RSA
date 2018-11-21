@@ -1,8 +1,8 @@
 Bài tập lớn - Số học thuật toán
 =============================
-## Mã hóa RSA
+# Mã hóa RSA
 
-1. Giới thiệu chung
+## 1. Giới thiệu chung
 
   - Tác giả:
     - Sinh viên: **Nguyễn Tú Anh**
@@ -16,7 +16,7 @@ Bài tập lớn - Số học thuật toán
     - Tài nguyên sử dụng: Tính toán trên số lớn có sẵn của python
     - Nội dung chính: Mã hóa văn bản (Tiếng Việt có dấu) với RSA và khóa tự sinh (1024 bits)
 
-2. Giới thiệu chung cấu trúc bài tâp lớn
+## 2. Giới thiệu chung cấu trúc bài tâp lớn
 
   - ***MyMath.py***:  Chứa hàm toán học
 
@@ -61,7 +61,7 @@ Bài tập lớn - Số học thuật toán
     - **getCiphertext(file)**: Lấy văn bản mã hóa từ file
     - **decode(n, d, C, base, fileOut)**: Giải mã bản mã C xuất ra bản rõ vào fileOut
     - **main()**: Chạy chương trình
-3. MyMath - Hàm toán học
+## 3. MyMath - Hàm toán học
   - **powMod(a, b, m)**
     - Ý nghĩa:  Trả về kết quả phép tính a^b mod m
     - Kiến thức: **Bình phương liên tiếp**
@@ -112,7 +112,7 @@ Bài tập lớn - Số học thuật toán
     		v1, v2, v3 = t1, t2, t3
     	return u1, u2, u3
     ```
-4. PrimeTest - Các hàm kiểm tra tính nguyên tố
+## 4. PrimeTest - Các hàm kiểm tra tính nguyên tố
   - **Fermat(p,x)**:
     - Ý nghĩa: Kiểm tra số p sử dụng định lý Fermat nhỏ với x cơ sở.
     - Kiến thức:
@@ -160,7 +160,7 @@ Bài tập lớn - Số học thuật toán
     			return False
     	return True
     ```
-5. Mã hóa RSA
+## 5. Mã hóa RSA
   - Tạo khóa
     - Lấy 2 số p,q
     - Gắn n = p*q, phi = (p-1)(q-1)
