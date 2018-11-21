@@ -61,6 +61,7 @@ Bài tập lớn - Số học thuật toán
     - **getCiphertext(file)**: Lấy văn bản mã hóa từ file
     - **decode(n, d, C, base, fileOut)**: Giải mã bản mã C xuất ra bản rõ vào fileOut
     - **main()**: Chạy chương trình
+
 ## 3. MyMath - Hàm toán học
   - **powMod(a, b, m)**
     - Ý nghĩa:  Trả về kết quả phép tính a^b mod m
@@ -112,6 +113,7 @@ Bài tập lớn - Số học thuật toán
     		v1, v2, v3 = t1, t2, t3
     	return u1, u2, u3
     ```
+
 ## 4. PrimeTest - Các hàm kiểm tra tính nguyên tố
   - **Fermat(p,x)**:
     - Ý nghĩa: Kiểm tra số p sử dụng định lý Fermat nhỏ với x cơ sở.
@@ -160,6 +162,7 @@ Bài tập lớn - Số học thuật toán
     			return False
     	return True
     ```
+    
 ## 5. Mã hóa RSA
   - **Tạo khóa**
     - Lấy 2 số p,q
