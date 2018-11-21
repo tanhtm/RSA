@@ -3,7 +3,7 @@ import PrimeTest
 
 def Random (b):
 	a = random.getrandbits(b)
-	a = a | 1 << (b-1)
+	a = a | (1 << (b-1))
 	a = a | 1
 	return a;
 
@@ -24,9 +24,9 @@ def getPrime(b):
 			p+= 2
 			continue
 		break
-	# print(d1)
-	# print(d2)
-	# print(d3)
+	print(d1)
+	print(d2)
+	print(d3)
 	return p
 
 def main(bits):
