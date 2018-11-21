@@ -180,6 +180,20 @@ Bài tập lớn - Số học thuật toán
     - Lấy bản rõ `P`
     - Chuyển các kí tự trong P về số theo bản mã `UTF-8` tạo thành mảng các số R
     - Ghép các số trong R thành số lớn nhỏ hơn n thành số `Pi` rồi mã hóa nó thành `Ci` với công thức: `Ci ≡ Pi^e mod n`
+    ```python
+    def encode(n, e, P, file):
+    	fo = open(file,"w")
+    	C = ""
+    	R = convertStringToInt(P, 4)
+    	A = createBigInt(R, len(str(n)))
+    	for i in A:
+    		M = MyMath.powMod(i,e,n)
+    		M = MyBase.toBase(M,64)
+    		C+= M + ' '
+    		fo.write(M+' ')
+    	fo.close()
+    	return C
+    ```
     - In mảng số mới ra file với `cơ số 64`
   - **Giải mã**
     - Lấy khóa bảo mật `(n, d)`
@@ -187,6 +201,24 @@ Bài tập lớn - Số học thuật toán
     - Lấy từ số trong C là `Ci` giải mã được `Pi` với công thức: `Pi ≡ Ci^d mod n`
     - Lấy kết quả tách số rồi chuyển về dạng kí tự
     - In kết quả ra file
+    ```python
+    def decode(n, d, C, base, fileOut): # file PlanintextDecode
+    	fo = open(fileOut,"w")
+    	P = ""
+    	for i in C:
+    		m = MyMath.powMod(MyBase.toInt(i,64),d,n)
+    		c = str(m)
+    		while len(c) % base != 0:
+    			c = '0' + c
+    		x = 0
+    		while x != len(c):
+    			a = c[x:x+base]
+    			x+= base
+    			P+= chr(int(a))
+    			fo.write(chr(int(a)))
+    	fo.close()
+    	return P
+    ```
 
   - **Kiến thức**
     - Tính nghịch đảo modulo bằng giải thuật *Euclid mở rộng*
