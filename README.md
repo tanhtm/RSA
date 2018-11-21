@@ -13,9 +13,10 @@ Bài tập lớn - Số học thuật toán
     - Giảng viên: GS. Hà Huy Khoái
     - Chủ đề: Mã hóa RSA
     - Ngôn ngữ lập trình: Python
+    - Tài nguyên sử dụng: Tính toán trên số lớn có sẵn của python
     - Nội dung chính: Mã hóa văn bản (Tiếng Việt có dấu) với RSA và khóa tự sinh (1024 bits)
 
-2. Cấu trúc file
+2. Giới thiệu chung cấu trúc bài tâp lớn
 
   - ***MyMath.py*** Chứa hàm toán học
 
@@ -44,7 +45,7 @@ Bài tập lớn - Số học thuật toán
   - ***MyBase.py***  Đổi cơ số
     - **toBase(a, base)**: Đổi từ số a cơ 10 sang cơ base
     - **toInt(r, base)**: Đổi từ số r cơ base sang cơ 10
-    
+
   - ***encode.py*** Chương trình mã hóa văn bản
 
     - **getPublicKey (file)**: Hàm lấy khóa công khai (n,e) từ file
@@ -60,3 +61,102 @@ Bài tập lớn - Số học thuật toán
     - **getCiphertext(file)**: Lấy văn bản mã hóa từ file
     - **decode(n, d, C, base, fileOut)**: Giải mã bản mã C xuất ra bản rõ vào fileOut
     - **main()**: Chạy chương trình
+3. MyMath - Hàm toán học
+  - **powMod(a, b, m)**
+    - Ý nghĩa:  Trả về kết quả phép tính a^b mod m
+    - Kiến thức: **Bình phương liên tiếp**
+    - Code:
+
+      ```python
+      def powMod(a, b, m):
+      	x = []
+      	while b != 0:
+      		x.append(b & 1)
+      		b = b >> 1
+      	sz = len(x)
+      	po = [a%m]
+      	for i in range(1,sz):
+      		p = (po[i-1]*po[i-1])%m
+      		po.append(p)
+      	r = 1
+      	for i in range(sz):
+      		if(x[i] != 0):
+      			r*= po[i]
+      			r%= m
+      	return r
+      ```
+  - **GCD(a, b)**
+    - Ý nghĩa: Trả về UCLN(a, b)
+    - Kiến thức: **UCLN(a, b)= UCLN(b, a% b)**, Giải thuật **Euclid**
+    - Code:
+    ```python
+    def GCD(a, b):
+    	while b != 0:
+    		t = b
+    		b = a%b
+    		a = t
+    	return a
+    ```
+  - **GCD_extended(a, b)**
+    - Ý nghĩa: Trả về 3 số x,y,z thỏa mãn x*a + y*b = z = UCLN(a, b)
+    - Kiến thức: Giải thuật **Euclid mở rộng**
+    - Code:
+    ```python
+    def GCD_extended(a, b):
+    	u1, u2, u3 = 1, 0, a
+    	v1, v2, v3 = 0, 1, b
+    	while v3 != 0:
+    		q = u3//v3
+    		t1, t2, t3 = u1 - q*v1, u2 - q*v2, u3 - q*v3
+    		u1, u2, u3 = v1, v2, v3
+    		v1, v2, v3 = t1, t2, t3
+    	return u1, u2, u3
+    ```
+4. PrimeTest - Các hàm kiểm tra tính nguyên tố
+  - **Fermat(p,x)**:
+    - Ý nghĩa: Kiểm tra số p sử dụng định lý Fermat nhỏ với x cơ sở.
+    - Kiến thức:
+      - Định lý Fermat nhỏ: a^(p-1) ≡ 1(mod p) (p: số nguyên tố và a không chia hết cho p)
+      - Số giả nguyên tố cơ sở b
+    - Code:
+    ```python
+    def Fermat(p,x):
+    	for i in range(x):
+    		a = sprime[i]
+    		if MyMath.powMod(a,p-1,p) != 1:
+    			return False
+    	return True
+    ```
+  - **Miller_Rabin(p, x)**:
+    - Ý nghĩa: Kiểm tra Miller- Rabin với x cơ sở
+    - Kiến thức: n là số nguyên dương lẻ, n-1 =2^s*t, n trải qua Miller cơ sở b nếu $$b^t ≡ 1 mod n$$
+    - Code:
+
+    ```python
+    # Q(a,p,m,s) = 1 nếu p trải qua Miller-Rabin cơ sở a
+    def Q(a, p, m, s):
+    	x = MyMath.powMod(a,m,p)
+    	if x == 1:
+    		return True
+    	for i in range(0,s+1):
+    		if x == p - 1:
+    			return True
+    		x *= x
+    		x %= p
+    	return False
+
+    def Miller_Rabin(p, x):
+    	# x : the number of bases
+    	# p - 1 = m*2^s (m is odd)
+    	n = p - 1
+    	s = 0
+    	while n & 1 == 0:
+    		n = n >> 1
+    		s+= 1
+    	m = n
+    	for i in range(x):
+    		a = sprime[i]
+    		if Q(a,p,m,s) == False:
+    			return False
+    	return True
+    ```

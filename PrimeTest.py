@@ -20,6 +20,7 @@ def Fermat(p,x):
 	return True
 
 # Miller–Rabin primality test
+# Q(a,p,m,s) = 1 nếu p trải qua Miller-Rabin cơ sở a
 def Q(a, p, m, s):
 	x = MyMath.powMod(a,m,p)
 	if x == 1:

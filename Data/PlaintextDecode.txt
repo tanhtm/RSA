@@ -1,2 +1,38 @@
-Mật mã học là một lĩnh vực liên quan với các kỹ thuật ngôn ngữ và toán học để đảm bảo an toàn thông tin, cụ thể là trong thông tin liên lạc. Về phương diện lịch sử, mật mã học gắn liền với quá trình mã hóa; điều này có nghĩa là nó gắn với các cách thức để chuyển đổi thông tin từ dạng này sang dạng khác nhưng ở đây là từ dạng thông thường có thể nhận thức được thành dạng không thể nhận thức được, làm cho thông tin trở thành dạng không thể đọc được nếu như không có các kiến thức bí mật. Quá trình mã hóa được sử dụng chủ yếu để đảm bảo tính bí mật của các thông tin quan trọng, chẳng hạn trong công tác tình báo, quân sự hay ngoại giao cũng như các bí mật về kinh tế, thương mại. Trong những năm gần đây, lĩnh vực hoạt động của mật mã hóa đã được mở rộng: mật mã hóa hiện đại cung cấp cơ chế cho nhiều hoạt động hơn là chỉ duy nhất việc giữ bí mật và có một loạt các ứng dụng như: chứng thực khóa công khai, chữ ký số, bầu cử điện tử hay tiền điện tử. Ngoài ra, những người không có nhu cầu thiết yếu đặc biệt về tính bí mật cũng sử dụng các công nghệ mật mã hóa, thông thường được thiết kế và tạo lập sẵn trong các cơ sở hạ tầng của công nghệ tính toán và liên lạc viễn thông.
-Mật mã học là một lĩnh vực liên ngành, được tạo ra từ một số lĩnh vực khác. Các dạng cổ nhất của mật mã hóa chủ yếu liên quan với các kiểu mẫu trong ngôn ngữ. Gần đây thì tầm quan trọng đã thay đổi và mật mã hóa sử dụng và gắn liền nhiều hơn với toán học, cụ thể là toán học rời rạc, bao gồm các vấn đề liên quan đến lý thuyết số, lý thuyết thông tin, độ phức tạp tính toán, thống kê và tổ hợp. Mật mã hóa cũng được coi là một nhánh của công nghệ, nhưng nó được coi là không bình thường vì nó liên quan đến các sự chống đối ngầm (xem công nghệ mật mã hóa và công nghệ an ninh). Mật mã hóa là công cụ được sử dụng trong an ninh máy tính và mạng.
+Foreword5%%%%%%%%
+A long time ago (on the 11 th of November in 2003, Tuesday, 3:55:57 UTC), I received an
+e-mail with the following message:
+“I should say in a simple word that with the UVa Site, you have given birth to
+a new CIVILIZATION and with the books you write (he meant “Programming
+Challenges: The Programming Contest Training Manual” [60], coauthored with
+Steven Skiena), you inspire the soldiers to carry on marching. May you live long
+to serve the humanity by producing super-human programmers.”
+Although that was clearly an exaggeration, it did cause me to think. I had a dream: to
+create a community around the project I had started as a part of my teaching job at UVa,
+with people from all around the world working together towards the same ideal. With a
+little searching, I quickly found a whole online community running a web-ring of sites with
+excellent tools that cover and provide whatever the UVa site lacked.
+To me, ‘Methods to Solve’ by Steven Halim, a very young student from Indonesia, was
+one of the more impressive websites. I was inspired to believe that the dream would become
+real one day, because in this website lay the result of the hard work of a genius of algorithms
+and informatics. Moreover, his declared objectives matched the core of my dream: to serve
+humanity. Even better, he has a brother with similar interests and capabilities, Felix Halim.
+It’s a pity that it takes so much time to start a real collaboration, but life is like that.
+Fortunately, all of us have continued working together in a parallel fashion towards the
+realization of that dream—the book that you have in your hands now is proof of that.
+I can’t imagine a better complement for the UVa Online Judge. This book uses lots of
+examples from UVa carefully selected and categorized both by problem type and solving
+technique, providing incredibly useful help for the users of the site. By mastering and
+practicing most programming exercises in this book, a reader can easily solve at least 500
+problems in the UVa Online Judge, which will place them in the top 400-500 amongst
+≈100000 UVa OJ users.
+It’s clear that the book “Competitive Programming: Increasing the Lower Bound of
+Programming Contests” is suitable for programmers who want to improve their ranks in
+upcoming ICPC regionals and IOIs. The two authors have gone through these contests
+(ICPC and IOI) themselves as contestants and now as coaches. But it’s also an essential
+colleague for newcomers—as Steven and Felix say in the introduction ‘the book is not meant
+to be read once, but several times’.
+Moreover, it contains practical C++ source code to implement given algorithms. Un-
+derstanding a problem is one thing, but knowing the algorithm to solve it is another, and
+implementing the solution well in short and efficient code is tricky. After you have read this
+extraordinary book three times you will realize that you are a much better programmer and,
+more importantly, a happier person.
